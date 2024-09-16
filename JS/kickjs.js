@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function sendData(action, qrCodeData) {
     const qrDetails = JSON.parse(qrCodeData); // Assume the QR code data is in JSON format
 
-    fetch('https://script.google.com/macros/s/AKfycbx1Pfyjm5i08-YsgUh6ADN6GObpU18FUvWqcjfAZZDOHACnUpdpcvKSDsBd3GPmHQYgAg/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwAIO85xLi5JK3fnqKFTKCq9obKhFVm672eHvx4AYIgrg7-snhjgmKcg6aVV-oSqf-SxQ/exec', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
