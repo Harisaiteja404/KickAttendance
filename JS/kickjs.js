@@ -38,9 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         action: action  // Send the action ("enter" or "exit")
       }),
     })
-      .then(response => response.text())
-      .then(result => alert('Data sent successfully'))
-      .catch(error => console.error('Error:', error));
+    .catch(error => {
+      console.error('Error:', error);
+      showToast('Failed to send data');
+    });
   }
 
   function startScan(action) {
@@ -73,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Stop the QR code reader and clear the scanning interface
         qrReader.stop().then(() => {
           console.log("QR Code scanning stopped.");
-          // Optionally clear the QR reader container
+          // Clear the QR reader container
           document.getElementById('qr-reader').innerHTML = '';
         }).catch(err => {
           console.error("Error stopping QR Code scanning.", err);
