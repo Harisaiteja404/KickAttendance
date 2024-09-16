@@ -1,0 +1,20 @@
+1. send rsvp.
+	condition: if yes:
+			then send them their QR code to gmail.
+				: it should include these details: their Full name, center.
+2.website:
+	1.scan and enter:
+		entry point they will scan the qr code:
+			automatically the in-time and full name and center will be entered to a sheet.	
+	2.scan and exit.
+			automatically the in-time and full name and center will be entered to a sheet.
+	optional:
+		access page:
+			1.number people entered
+			2.number of people who didn't turnup even after keeping yes.
+			3.list of people who didn't turnup even after keeping yes.
+
+
+Testing:
+
+			
