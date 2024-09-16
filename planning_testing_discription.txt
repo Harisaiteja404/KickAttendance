@@ -1,7 +1,7 @@
 1. send rsvp.
 	condition: if yes:
 			then send them their QR code to gmail.
-				: it should include these details: their Full name, center.
+				: it should include these details: their Full name, center, phone number. in json formate.
 2.website:
 	1.scan and enter:
 		entry point they will scan the qr code:
@@ -16,5 +16,11 @@
 
 
 Testing:
+
+
+entry app script deployment details:
+ url: https://script.google.com/macros/s/AKfycbzawQOJp3Sqbbrwm5BouBaCA3MhK-zavo8Tm3opzoe_u-uCUevszPcauyg0XxoOQ6oV_w/exec
+ id: AKfycbzawQOJp3Sqbbrwm5BouBaCA3MhK-zavo8Tm3opzoe_u-uCUevszPcauyg0XxoOQ6oV_w
+ 
 
 			
