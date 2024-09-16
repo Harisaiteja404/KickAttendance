@@ -19,8 +19,7 @@ Testing:
 
 
 entry app script deployment details:
- url: https://script.google.com/macros/s/AKfycbzawQOJp3Sqbbrwm5BouBaCA3MhK-zavo8Tm3opzoe_u-uCUevszPcauyg0XxoOQ6oV_w/exec
- id: AKfycbzawQOJp3Sqbbrwm5BouBaCA3MhK-zavo8Tm3opzoe_u-uCUevszPcauyg0XxoOQ6oV_w
- 
+ url: https://script.google.com/macros/s/AKfycbyNAhkYuLNEiwi7pqddl5oHcsV9-EF4853Yq46-kQ_hauJ1HdTiHeRAjmZwcGgHrcpEKw/exec
+ id: AKfycbyNAhkYuLNEiwi7pqddl5oHcsV9-EF4853Yq46-kQ_hauJ1HdTiHeRAjmZwcGgHrcpEKw
 
 			
