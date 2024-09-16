@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetch('https://script.google.com/macros/s/AKfycbx1Pfyjm5i08-YsgUh6ADN6GObpU18FUvWqcjfAZZDOHACnUpdpcvKSDsBd3GPmHQYgAg/exec', {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },
