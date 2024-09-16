@@ -38,4 +38,25 @@ body {
       padding: 15px;
     }
   }
+
+/* Toast container */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* Toast notification */
+.toast {
+  display: none;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
   

@@ -2,6 +2,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const scanEnterButton = document.getElementById('scan-enter');
   const scanExitButton = document.getElementById('scan-exit');
 
+  const toastContainer = document.getElementById('toast');
+
+  function showToast(message) {
+    // Create a toast element
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerText = message;
+    toastContainer.appendChild(toast);
+
+    // Show the toast
+    toast.style.display = 'block';
+
+    // Hide the toast after 5 seconds
+    setTimeout(() => {
+      toast.style.display = 'none';
+      toastContainer.removeChild(toast);
+    }, 5000);
+  }
+
   function sendData(action, qrCodeData) {
     const qrDetails = JSON.parse(qrCodeData); // Assume the QR code data is in JSON format
 
