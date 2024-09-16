@@ -58,9 +58,22 @@ document.addEventListener('DOMContentLoaded', () => {
         qrbox: 250
       },
       (decodedText, decodedResult) => {
+        // Parse JSON and format message
+        let message = "Scanned Data: " + decodedText;
+        try {
+          const qrDetails = JSON.parse(decodedText);
+          message = `Name: ${qrDetails.fullName}, Center: ${qrDetails.centerName}, Phone: ${qrDetails.phoneNumber}`;
+        } catch (e) {
+          console.error("Failed to parse QR code data", e);
+        }
+        showToast(message);
         sendData(action, decodedText);  // Call sendData() here with the decoded QR code data
+        
+        // Stop the QR code reader and clear the scanning interface
         qrReader.stop().then(() => {
           console.log("QR Code scanning stopped.");
+          // Optionally clear the QR reader container
+          document.getElementById('qr-reader').innerHTML = '';
         }).catch(err => {
           console.error("Error stopping QR Code scanning.", err);
         });
