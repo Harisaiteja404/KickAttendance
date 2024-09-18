@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Code Attendance</title>
-  <link rel="stylesheet" href="./CSS/kickcss.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <link rel="stylesheet" href="./CSS/kickcss.css">
 </head>
+
 <body>
-  <h1>QR Code Attendance</h1>
+    <button id="scanButton">Scan and Show</button>
+    <div id="scanner-container"></div>
+    <div id="qr-data">Scanned QR code data will appear here</div>
 
-  <button id="scan-enter">Scan and Enter</button>
-  <button id="scan-exit">Scan and Exit</button>
 
-  <div id="qr-reader"></div>
-  <!-- Toast container -->
-<div id="toast" class="toast"></div>
+    <!-- Hidden Form -->
+    <form id="hiddenForm"
+        action="https://script.google.com/macros/s/AKfycbxMSlaquvWLqUcvzoXvq_hbAckh0sW7q2cSYeYVUyeHBuACiNpw0liAiKOcpWj61FpR/exec"
+        method="POST">
+        <input type="hidden" name="name" id="formName">
+        <input type="hidden" name="center" id="formCenter">
+        <input type="hidden" name="contact" id="formContact">
+        <input type="hidden" name="scan_time" id="formScanTime">
+    </form>
 
-  <!-- html5-qrcode -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.1.0/html5-qrcode.min.js"></script>
 
-  <!-- local script -->
-  <script src="./JS/kickjs.js"></script>
+
+    <!-- new code lines -->
+
+
+    <!-- new code lines -->
+
+
+
+    <!-- Include the QR code scanning library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.0.1/html5-qrcode.min.js"></script>
+
+    <script src="./JS/kickjs.js"></script>
 </body>
+
 </html>

@@ -1,92 +1,53 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const scanEnterButton = document.getElementById('scan-enter');
-  const scanExitButton = document.getElementById('scan-exit');
+document.getElementById('scanButton').addEventListener('click', function() {
+  const qrDataDiv = document.getElementById('qr-data');
+  const scannerContainer = document.getElementById('scanner-container');
+  
+  const qrCodeScanner = new Html5Qrcode("scanner-container");
 
-  const toastContainer = document.getElementById('toast');
-
-  function showToast(message) {
-    // Create a toast element
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerText = message;
-    toastContainer.appendChild(toast);
-
-    // Show the toast
-    toast.style.display = 'block';
-
-    // Hide the toast after 5 seconds
-    setTimeout(() => {
-      toast.style.display = 'none';
-      toastContainer.removeChild(toast);
-    }, 5000);
-  }
-
-  function sendData(action, qrCodeData) {
-    const qrDetails = JSON.parse(qrCodeData); // Assume the QR code data is in JSON format
-
-    fetch('https://script.google.com/macros/s/AKfycbwAIO85xLi5JK3fnqKFTKCq9obKhFVm672eHvx4AYIgrg7-snhjgmKcg6aVV-oSqf-SxQ/exec', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        fullName: qrDetails.fullName,
-        centerName: qrDetails.centerName,
-        phoneNumber: qrDetails.phoneNumber,
-        time: new Date().toISOString(),  // Record the current time
-        action: action  // Send the action ("enter" or "exit")
-      }),
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      showToast('Failed to send data');
-    });
-  }
-
-  function startScan(action) {
-    // Check if Html5Qrcode is defined
-    if (typeof Html5Qrcode === "undefined") {
-      console.error("Html5Qrcode is not defined");
-      return;
-    }
-
-    const qrReader = new Html5Qrcode("qr-reader");
-
-    qrReader.start(
-      { facingMode: "environment" },
+  qrCodeScanner.start(
+      { facingMode: "environment" }, // Use the rear camera
       {
-        fps: 10,
-        qrbox: 250
+          fps: 10,       // Frame rate
+          qrbox: { width: 400, height: 400 } // Size of the scanning box
       },
       (decodedText, decodedResult) => {
-        // Parse JSON and format message
-        let message = "Scanned Data: " + decodedText;
-        try {
-          const qrDetails = JSON.parse(decodedText);
-          message = `Name: ${qrDetails.fullName}, Center: ${qrDetails.centerName}, Phone: ${qrDetails.phoneNumber}`;
-        } catch (e) {
-          console.error("Failed to parse QR code data", e);
-        }
-        showToast(message);
-        sendData(action, decodedText);  // Call sendData() here with the decoded QR code data
-        
-        // Stop the QR code reader and clear the scanning interface
-        qrReader.stop().then(() => {
-          console.log("QR Code scanning stopped.");
-          // Clear the QR reader container
-          document.getElementById('qr-reader').innerHTML = '';
-        }).catch(err => {
-          console.error("Error stopping QR Code scanning.", err);
-        });
-      },
-      (errorMessage) => {
-        console.log("QR Code scan error:", errorMessage);
-      }
-    ).catch(err => {
-      console.error("Error starting QR Code scanning.", err);
-    });
-  }
+          // Parse the JSON data
+          let qrData;
+          try {
+              qrData = JSON.parse(decodedText);
+          } catch (error) {
+              qrDataDiv.textContent = 'Invalid QR code data.';
+              return;
+          }
 
-  scanEnterButton.addEventListener('click', () => startScan('enter'));  // Trigger scan and send "enter" action
-  scanExitButton.addEventListener('click', () => startScan('exit'));   // Trigger scan and send "exit" action
+          // Get the current time
+          const scanTime = new Date().toLocaleTimeString();
+          console.log(scanTime);
+
+          // Fill the hidden form with data
+          document.getElementById('formName').value = qrData.name || '';
+          document.getElementById('formCenter').value = qrData.center || '';
+          document.getElementById('formContact').value = qrData.contact || '';
+          document.getElementById('formScanTime').value = scanTime;
+
+          // Submit the form
+          document.getElementById('hiddenForm').submit();
+
+          // Display scanned data
+          qrDataDiv.textContent = `QR Code Data: ${decodedText}`;
+
+          // Stop scanning
+          qrCodeScanner.stop().then(() => {
+              console.log("QR Code scanning stopped.");
+          }).catch((err) => {
+              console.error("Error stopping QR Code scanning:", err);
+          });
+      },
+      (error) => {
+          // Handle scanning errors
+          console.warn("QR Code scan error:", error);
+      }
+  ).catch((err) => {
+      console.error("Error starting QR Code scanning:", err);
+  });
 });
