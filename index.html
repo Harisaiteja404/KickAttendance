@@ -10,18 +10,20 @@
 
 <body>
     <button id="scanButton">Scan and Show</button>
+    <button id="scanButtonOut">Scan and out</button>
     <div id="scanner-container"></div>
     <div id="qr-data">Scanned QR code data will appear here</div>
 
 
     <!-- Hidden Form -->
     <form id="hiddenForm"
-        action="https://script.google.com/macros/s/AKfycbxMSlaquvWLqUcvzoXvq_hbAckh0sW7q2cSYeYVUyeHBuACiNpw0liAiKOcpWj61FpR/exec"
+        action="https://script.google.com/macros/s/AKfycbyCWLDGxVE2URj3so6jkUFRniVPAgDwHnrB8N9D3upVwSWquMjgq3E9SX-mh_yCi55O/exec"
         method="POST">
         <input type="hidden" name="name" id="formName">
         <input type="hidden" name="center" id="formCenter">
         <input type="hidden" name="contact" id="formContact">
         <input type="hidden" name="scan_time" id="formScanTime">
+        <input type="hidden" name="attandanceType" id="formAttandanceType">
     </form>
 
 

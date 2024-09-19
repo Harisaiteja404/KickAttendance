@@ -33,4 +33,37 @@ Mandatory
 	center:
 	scan time:
 
-			
+
+============================================================================
+sending Mail with QR:
+
+sheet columns are:
+1. gmail
+2. name
+3. contact
+4. center
+5.YESSSSS, Definitely Yes, Not gonna miss it, Ill check and get back
+
+6. we will apply to it: Mail sent or not: sent/not
+	ensure clearly
+
+information on qr code:
+	name:
+	center:
+	contact:
+
+who will receive gmail:
+	first check is column 5==YESSSSS, Definitely Yes, Not gonna miss it:
+			store all cell locations.
+		check all the corresponding rows in 
+
+================================================================================
+
+Teams divide:
+	separate sheet with 15 predefined teams:
+	
+	takes input and keeps them in different teams considers centers:
+			it will make sure there will be very minimum of same center people in each team.
+				initial start will be with 8 teams.
+					first max is=8
+		
