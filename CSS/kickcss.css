@@ -1,25 +1,124 @@
+/* Basic styles */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 10%;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
 #scanner-container {
-  width: 80%; /* Adjust width as needed */
-  max-width: 600px; /* Set a maximum width */
-  margin: 0 auto; /* Center the container */
-  border: 3px solid #333; /* Add a solid border for better visibility */
-  padding: 10px; /* Add some padding */
-  position: relative; /* Ensure positioning context for QR code box */
+  width: 90%; /* Adjusted width for mobile devices */
+  max-width: 600px; /* Max width for larger screens */
+  margin: 20px auto; /* Center the container with some margin */
+  border: 3px solid #333; /* Border for visibility */
+  padding: 10px; /* Padding inside the container */
+  position: relative; /* Positioning context for QR code box */
+  background: #fff; /* Background color for better contrast */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+  display: none;
+}
+
+.scanner-box {
+  position: absolute;
+  border: 2px solid #00ff00; /* Highlight color */
+  width: 250px;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+.scanner-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #00ff00; /* Corner color */
+}
+
+.corner-top-left {
+  top: -10px;
+  left: -10px;
+  border-radius: 50%;
+}
+
+.corner-top-right {
+  top: -10px;
+  right: -10px;
+  border-radius: 50%;
+}
+
+.corner-bottom-left {
+  bottom: -10px;
+  left: -10px;
+  border-radius: 50%;
+}
+
+.corner-bottom-right {
+  bottom: -10px;
+  right: -10px;
+  border-radius: 50%;
 }
 
 #qr-data {
   margin-top: 20px;
-  font-size: 1.2em;
+  font-size: 1em; /* Adjusted font size for better readability on mobile */
   color: #333;
 }
 
 /* Hide the form */
 #hiddenForm {
   display: none;
+}
+
+/* Button styles */
+button {
+  background-color: #007bff; /* Primary color */
+  color: #fff; /* Text color */
+  border: none; /* Remove default border */
+  padding: 10px 20px; /* Padding for buttons */
+  margin: 10px; /* Margin between buttons */
+  font-size: 1em; /* Font size for readability */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
+
+video{
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+  body{
+    margin-top: 20%;
+  }
+
+  #scanner-container {
+    width: 95%; /* Full width with some margin */
+    padding: 5px; /* Reduced padding on smaller screens */
+  }
+
+  button {
+    width: 90%; /* Full width buttons on mobile */
+    margin: 5px 0; /* Adjust margin for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  #qr-data {
+    font-size: 0.9em; /* Smaller font size on very small screens */
+  }
+
+  button {
+    font-size: 0.9em; /* Adjust button font size for smaller screens */
+  }
 }
