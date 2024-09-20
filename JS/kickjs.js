@@ -61,6 +61,7 @@ function scanTrigger(attendanceType) {
             };
             xhr.send(formData);
             qrCodeScanner.stop().then(()=>{
+                scannerContainer.style.display = 'none';
                 console.log("QR code scanning stopped.");
             }).catch((err)=>{
                 console.error("Error stopping QR Code Scanning:",err);
