@@ -53,6 +53,7 @@ function scanTrigger(attendanceType) {
                     responseMessage.style.fontSize="50px";
                     responseMessage.style.display="block";
                 }else{
+                    scannerContainer.style.display = 'none';
                     responseMessage.textContent=xhr.responseText;
                     responseMessage.style.color="red";
                 }
